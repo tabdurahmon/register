@@ -14,12 +14,9 @@
     @apply grid grid-cols-1 lg:grid-cols-2 min-h-screen w-full;
   }
   .auth-left {
-    @apply hidden lg:block  auth-bg-lg;
+    @apply hidden lg:block auth-bg;
   }
   .auth-right {
-    @apply auth-bg lg:bg-none grid place-items-center;
+    @apply auth-bg lg:bg-none bg-orange-200 grid place-items-center;
   }
 }
-
-/* picsum */
-/* https://picsum.photos/1000/1300 */

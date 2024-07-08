@@ -21,17 +21,17 @@ import { useRegister } from "../hooks/useRegister";
 import { useLogin } from "../hooks/useLogin";
 
 function Login() {
-  const farxod = useActionData();
+  const user = useActionData();
 
   const { isPanding, registerWithGoogle } = useRegister();
 
   const { isPanding: isPandingLogin, signIn } = useLogin();
 
   useEffect(() => {
-    if (farxod) {
-      signIn(farxod.email, farxod.password);
+    if (user) {
+      signIn(user.email, user.password);
     }
-  }, [farxod]);
+  }, [user]);
 
   return (
     <div className="auth-container">
@@ -65,7 +65,7 @@ function Login() {
               </button>
             )}
             {!isPandingLogin && (
-              <button className="btn btn-primary btn-block font-bold">
+              <button className="btn bg-slate-700 btn-block font-bold">
                 Login
               </button>
             )}
@@ -75,7 +75,7 @@ function Login() {
               <button
                 disabled
                 type="button"
-                className="btn bg-green-300 border-red-400 btn-block font-bold"
+                className="btn bg-slate-700 border-red-400 btn-block font-bold"
               >
                 Loading...
               </button>
@@ -84,7 +84,7 @@ function Login() {
               <button
                 onClick={registerWithGoogle}
                 type="button"
-                className="btn bg-green-300 border-red-400 btn-block font-bold"
+                className="btn bg-sky-300 border-red-400 btn-block font-bold"
               >
                 Google
               </button>

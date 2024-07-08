@@ -19,25 +19,31 @@ export const action = async ({ request }) => {
 import { useRegister } from "../hooks/useRegister";
 
 function Register() {
-  const farxod = useActionData();
+  const user = useActionData();
 
   const { isPanding, registerWithGoogle, registerEmailAndPassword } =
     useRegister();
 
   useEffect(() => {
-    if (farxod) {
+    if (user) {
       registerEmailAndPassword(
-        farxod.email,
-        farxod.password,
-        farxod.displayName,
-        farxod.photoURL
+        user.email,
+        user.password,
+        user.displayName,
+        user.photoURL
       );
     }
-  }, [farxod]);
+  }, [user]);
 
   return (
     <div className="auth-container">
-      <div className="auth-left"></div>
+      <div className="auth-left">
+        <img
+          className="auth-container"
+          src="https://c0.wallpaperflare.com/preview/205/953/174/registration-login-keyboard-hand.jpg"
+        />
+      </div>
+
       <div className="auth-right">
         <Form
           method="post"
@@ -70,21 +76,25 @@ function Register() {
           />
           <div className="mt-6">
             {isPanding && (
-              <button disabled className="btn btn-info  border-red-400 btn-block font-bold">
+              <button
+                disabled
+                className="btn bg-slate-700  border-red-400 btn-block font-bold"
+              >
                 Loading...
               </button>
             )}
             {!isPanding && (
-              <button className="btn btn-info  border-red-400 btn-block font-bold">
+              <button className="btn bg-slate-700  border-red-400 btn-block font-bold">
                 Register
               </button>
             )}
           </div>
           <div>
             {isPanding && (
-              <button disabled
+              <button
+                disabled
                 type="button"
-                className="btn bg-green-300 border-red-400 btn-block font-bold"
+                className="btn bg-slate-700 border-red-400 btn-block font-bold"
               >
                 Loading...
               </button>
@@ -93,7 +103,7 @@ function Register() {
               <button
                 onClick={registerWithGoogle}
                 type="button"
-                className="btn bg-green-300 border-red-400 btn-block font-bold"
+                className="btn bg-slate-700 border-red-400 btn-block font-bold"
               >
                 Google
               </button>

@@ -36,12 +36,9 @@ function Register() {
   }, [user]);
 
   return (
-    <div className="auth-container">
-      <div className="auth-left">
-        <img
-          className="auth-container"
-          src="https://c0.wallpaperflare.com/preview/205/953/174/registration-login-keyboard-hand.jpg"
-        />
+    <div className="">
+      <div className="">
+        <img className="auth-container" src="" />
       </div>
       <div className="auth-right">
         <Form

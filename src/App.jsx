@@ -7,10 +7,22 @@ import {
 //Layout
 import MainLayout from "./layout/MainLayout";
 //Pages
-import { Home, About, Contact, Login, Register, ErrorPage } from "./pages";
+import {
+  Home,
+  About,
+  Contact,
+  Login,
+  Register,
+  ErrorPage,
+  SingleProduct,
+  Cart,
+} from "./pages";
 //actions
 import { action as RegisterAction } from "./pages/Register";
 import { action as LoginAction } from "./pages/Login";
+//Loaders
+import { loader as HomeLoader } from "./pages/Home";
+import { loader as SingleProductLoader } from "./pages/SingleProduct";
 //components
 import ProtectedRoutes from "./components/ProtectedRoutes";
 
@@ -37,6 +49,7 @@ function App() {
         {
           index: true,
           element: <Home />,
+          loader: HomeLoader,
         },
         {
           path: "about",
@@ -45,6 +58,15 @@ function App() {
         {
           path: "contact",
           element: <Contact />,
+        },
+        {
+          path: "singleProduct/:id",
+          element: <SingleProduct />,
+          loader: SingleProductLoader,
+        },
+        {
+          path: "cart",
+          element: <Cart />,
         },
       ],
     },
@@ -65,7 +87,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       dispatch({ type: "LOG_IN", payload: user });
-      dispatch({ type: "IS_AUTH_READY"});
+      dispatch({ type: "IS_AUTH_READY" });
     });
   }, []);
 

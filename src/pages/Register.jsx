@@ -1,4 +1,3 @@
-//rrd import
 import { Form, Link, useActionData } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -12,6 +11,7 @@ export const action = async ({ request }) => {
   let photoURL = formData.get("photoURL");
   let email = formData.get("email");
   let password = formData.get("password");
+  console.log({ displayName, photoURL, email, password }); // Konsolda tekshirish uchun
   return { displayName, photoURL, email, password };
 };
 
@@ -20,12 +20,12 @@ import { useRegister } from "../hooks/useRegister";
 
 function Register() {
   const user = useActionData();
-
   const { isPanding, registerWithGoogle, registerEmailAndPassword } =
     useRegister();
 
   useEffect(() => {
     if (user) {
+      console.log("Registering user:", user); // Konsolda tekshirish uchun
       registerEmailAndPassword(
         user.email,
         user.password,
@@ -43,7 +43,6 @@ function Register() {
           src="https://c0.wallpaperflare.com/preview/205/953/174/registration-login-keyboard-hand.jpg"
         />
       </div>
-
       <div className="auth-right">
         <Form
           method="post"
@@ -109,7 +108,6 @@ function Register() {
               </button>
             )}
           </div>
-
           <div className="text-center">
             <p className="text-black font-medium lg:text-slate-400">
               If you have account,{" "}

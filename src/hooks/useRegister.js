@@ -21,7 +21,7 @@ export const useRegister = () => {
   const registerWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      setIsPanding(true);
+      setIsPanding(false);
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       dispatch({ type: "LOG_IN", payload: user });
@@ -44,7 +44,7 @@ export const useRegister = () => {
   ) => {
     try {
       const register = createUserWithEmailAndPassword(auth, email, password);
-      setIsPanding(true);
+      setIsPanding(false);
       const user = (await register).user;
       await updateProfile(auth.currentUser, {
         photoURL,

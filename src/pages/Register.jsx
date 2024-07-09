@@ -25,7 +25,7 @@ function Register() {
 
   useEffect(() => {
     if (user) {
-      console.log("Registering user:", user); // Konsolda tekshirish uchun
+      console.log("Registering user:", user);
       registerEmailAndPassword(
         user.email,
         user.password,
